@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ebc8bf4b63cdf4aa8ebbdff029b472, type: 3}
+  m_Name: AsteroidData_Medium
+  m_EditorClassIdentifier: 
+  size: 2
+  maxHealth: 30
+  sprites:
+  - {fileID: -39755869691097218, guid: 9229590d48255b94ba3210eaaad0efa5, type: 3}
+  - {fileID: -6532366514859937553, guid: 9229590d48255b94ba3210eaaad0efa5, type: 3}
+  - {fileID: -8948216163402802190, guid: 9229590d48255b94ba3210eaaad0efa5, type: 3}
+  - {fileID: 6360722591433423952, guid: 9229590d48255b94ba3210eaaad0efa5, type: 3}
+  - {fileID: -3293240858310902380, guid: 9229590d48255b94ba3210eaaad0efa5, type: 3}
+  contactDamage: 10
+  minSplitForce: 1
+  maxSplitForce: 3
