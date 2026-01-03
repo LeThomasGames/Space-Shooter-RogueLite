@@ -111,7 +111,6 @@ public class Asteroid : EnemyBase
 
                 // Instanciation
                 GameObject split = Instantiate(asteroidPrefab, spawnPos, Quaternion.identity);
-                Debug.Log($"Spawned split #{i} — components on clone : {split.GetComponents<Component>().Length}");
 
                 // Ajuste la taille du nouveau fragment
                 if (split.TryGetComponent<Asteroid>(out var asteroidScript))

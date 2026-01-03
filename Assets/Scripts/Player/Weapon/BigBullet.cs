@@ -1,17 +1,15 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class StraightBullet : BulletBase
-{
-    public Animator anim;
+public class BigBullet : BulletBase
+{   
     protected override void Move()
     {
-        // Déplacement en ligne droite vers la droite
         Vector2 vec = new Vector2(speed, 0);
         transform.Translate(vec * speed * Time.deltaTime);
     }
     protected override void PlayExplosionEffect()
     {
-        //anim.SetTrigger("Explode");
+        
+        return;
     }
 }

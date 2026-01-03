@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &59208144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7110507398486986175, guid: 1cbb75a903142d646b30473f30093db1, type: 3}
+  m_PrefabInstance: {fileID: 1482269823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &67656580
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +201,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -217,6 +224,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -306,7 +314,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -314,6 +321,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -760,8 +768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2573f7951cb333e4d84eb651daedef07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1877740161113332, guid: e5ebc5356548e5949816164814a87496, type: 3}
-  poolSize: 20
+  smallBulletPrefab: {fileID: 1877740161113332, guid: e5ebc5356548e5949816164814a87496, type: 3}
+  bigBulletPrefab: {fileID: 1971386744341988937, guid: f6cb8616d739e754ca26e643cf212264, type: 3}
+  smallBulletPoolSize: 10
+  bigBulletPoolSize: 2
 --- !u!1 &1186994176
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +924,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -935,6 +947,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -1037,6 +1050,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1058,6 +1073,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -1436,6 +1452,10 @@ PrefabInstance:
       propertyPath: firePoint2
       value: 
       objectReference: {fileID: 1711277741}
+    - target: {fileID: 465830083365274251, guid: 1cbb75a903142d646b30473f30093db1, type: 3}
+      propertyPath: bigFirePoint
+      value: 
+      objectReference: {fileID: 59208144}
     - target: {fileID: 869022151606460396, guid: 1cbb75a903142d646b30473f30093db1, type: 3}
       propertyPath: m_Controller
       value: 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BulletBase : MonoBehaviour
 {
-    public int speed = 20;
+    public float speed = 1;
     public int damage = 10;
 
     private bool hasDespawned = false;
@@ -38,9 +38,9 @@ public abstract class BulletBase : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
-            PlayExplosionEffect();
             Despawn();
         }
+        PlayExplosionEffect();
     }
 
     private void OnBecameInvisible()

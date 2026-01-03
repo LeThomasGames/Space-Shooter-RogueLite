@@ -10,11 +10,10 @@ public class BulletPooler : MonoBehaviour
     [SerializeField] private int smallBulletPoolSize = 30;
     [SerializeField] private int bigBulletPoolSize = 2;
 
-    //private Queue<GameObject> smallBulletPool = new Queue<GameObject>();
-    //private Queue<GameObject> bigBulletPool = new Queue<GameObject>();
     private Dictionary<string, Queue<GameObject>> bulletPools = new();
     private Dictionary<string, GameObject> bulletPrefabs = new();
-    void Awake()
+
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
@@ -23,34 +22,42 @@ public class BulletPooler : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         InitialisePool();
     }
+
     public GameObject GetBullet(string bulletType)
     {
+        if (!bulletPools.ContainsKey(bulletType))
+        {
+            Debug.LogError($"Bullet type inconnu: {bulletType}");
+            return null;
+        }
+
         if (bulletPools[bulletType].Count > 0)
         {
-            var bullet = bulletPools[bulletType].Dequeue();
+            GameObject bullet = bulletPools[bulletType].Dequeue();
             bullet.SetActive(true);
             return bullet;
         }
-        
-        GameObject bullet = Instantiate(smallBulletPrefab);
-        return bullet;
-        
+
+        GameObject newBullet = Instantiate(bulletPrefabs[bulletType]);
+        return newBullet;
     }
 
     public void ReturnBullet(GameObject bullet)
     {
         bullet.SetActive(false);
-        smallBulletPool.Enqueue(bullet);
+
+        string type = bullet.CompareTag("bigBullet") ? "big" : "small";
+        bulletPools[type].Enqueue(bullet);
     }
-    public void InitialisePool()
+
+    private void InitialisePool()
     {
-        // Associe chaque type à son prefab
         bulletPrefabs["small"] = smallBulletPrefab;
         bulletPrefabs["big"] = bigBulletPrefab;
 
-        // Initialise les pools vides
         bulletPools["small"] = new Queue<GameObject>();
         bulletPools["big"] = new Queue<GameObject>();
 
@@ -58,19 +65,14 @@ public class BulletPooler : MonoBehaviour
         {
             GameObject bullet = Instantiate(smallBulletPrefab);
             bullet.SetActive(false);
-            smallBulletPool.Enqueue(bullet);
+            bulletPools["small"].Enqueue(bullet);
         }
 
         for (int i = 0; i < bigBulletPoolSize; i++)
         {
             GameObject bullet = Instantiate(bigBulletPrefab);
             bullet.SetActive(false);
-            bigBulletPool.Enqueue(bullet);
+            bulletPools["big"].Enqueue(bullet);
         }
-    }
-    public void ReinitialisePool()
-    {
-        smallBulletPool.Clear();
-        InitialisePool();
     }
 }
